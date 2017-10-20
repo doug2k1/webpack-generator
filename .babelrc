@@ -1,0 +1,9 @@
+{
+  "presets": [
+    "env", "react", "flow"
+  ],
+  "plugins": [
+    "transform-class-properties",
+    "babel-plugin-transform-object-rest-spread"
+  ]
+}

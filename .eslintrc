@@ -1,0 +1,21 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "plugin:flowtype/recommended",
+    "airbnb",
+    "standard"
+  ],
+  "env": {
+    "browser": true
+  },
+  "plugins": [
+    "flowtype"
+  ],
+  "rules": {
+    "react/jsx-filename-extension": "off",
+    "react/prefer-stateless-function": "off",
+    "jsx-a11y/label-has-for": ["error", {
+      "required": {"some": ["nesting", "id"]}
+    }]
+  }
+}
