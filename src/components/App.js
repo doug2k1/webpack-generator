@@ -18,7 +18,8 @@ class App extends React.Component<{}, State> {
         filename: 'bundle.js'
       },
       loaders: {
-        es6: false
+        es6: false,
+        react: false
       }
     }
   }
@@ -31,13 +32,13 @@ class App extends React.Component<{}, State> {
 
   render () {
     return (
-      <div>
-        <h1>Webpack</h1>
-        <div className="row">
-          <div className="col">
+      <div className="container">
+        <h1 className="title">Webpack</h1>
+        <div className="columns">
+          <div className="column">
             <Form data={this.state.formData} onChange={this.handleFormChange} />
           </div>
-          <div className="col">
+          <div className="column">
             <Code data={this.state.formData} />
           </div>
         </div>

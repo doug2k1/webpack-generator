@@ -33,37 +33,45 @@ class Form extends React.Component<Props, State> {
   render () {
     return (
       <div>
-        <fieldset>
-          <legend>Entry</legend>
-          <p>
+        <h2 className="title is-2">Form</h2>
+        <div className="field">
+          <label className="label">Entry</label>
+          <div className="control">
             <input className="input" type="text" name="entry" value={this.state.entry} onChange={this.handleFormChange} />
-          </p>
-        </fieldset>
+          </div>
+        </div>
 
-        <fieldset>
-          <legend>Output</legend>
-          <p>
-            <input type="text" name="output.path" value={this.state.output.path} onChange={this.handleFormChange} />
-          </p>
-          <p>
-            <input type="text" name="output.filename" value={this.state.output.filename} onChange={this.handleFormChange} />
-          </p>
-        </fieldset>
+        <div className="field">
+          <label className="label">Output path</label>
+          <div className="control">
+            <input className="input" type="text" name="output.path" value={this.state.output.path} onChange={this.handleFormChange} />
+          </div>
+        </div>
 
-        <fieldset>
-          <legend>Loaders</legend>
-          <p>
-            <label>
-              Use ES6?
+        <div className="field">
+          <label className="label">Output filename</label>
+          <div className="control">
+            <input className="input" type="text" name="output.filename" value={this.state.output.filename} onChange={this.handleFormChange} />
+          </div>
+        </div>
+
+        <div className="field">
+          <div className="control">
+            <label className="checkbox">
               <input type="checkbox" name="loaders.es6" checked={this.state.loaders.es6} onChange={this.handleFormChange} />
+              Use ES6?
             </label>
+          </div>
+        </div>
 
-            <label>
-              React?
+        <div className="field">
+          <div className="control">
+            <label className="checkbox">
               <input type="checkbox" name="loaders.react" checked={this.state.loaders.react} onChange={this.handleFormChange} />
+              React?
             </label>
-          </p>
-        </fieldset>
+          </div>
+        </div>
       </div>
     )
   }

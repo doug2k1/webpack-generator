@@ -30,6 +30,8 @@ class Code extends React.Component<Props, State> {
   render () {
     return (
       <div>
+        <h2 className="title">Webpack config</h2>
+        <p className="subtitle">webpack.config.js</p>
         <div>
           <pre>
             <code className="hljs javascript" dangerouslySetInnerHTML={{ __html: this.state.code }} />
@@ -37,13 +39,24 @@ class Code extends React.Component<Props, State> {
         </div>
 
         <div>
-          <p>Modules:</p>
-          <pre>$ npm i -D {this.state.modules.join(' ')}</pre>
+          <h2 className="title">Modules</h2>
+          <p className="subtitle">Install with npm</p>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: this.state.modules.map(mod => (
+                `<a href="https://www.npmjs.com/package/${mod}" target="_blank">${mod}</a>`
+              )).join(', ')
+            }}
+          />
+          <pre>
+            <code>$ npm i -D {this.state.modules.join(' ')}</code>
+          </pre>
         </div>
 
         {this.state.babelConfig && (
           <div>
-            <p>Babel config (.babelrc):</p>
+            <h2 className="title">Babel config</h2>
+            <p className="subtitle">.babelrc</p>
             <pre>
               <code className="hljs javascript" dangerouslySetInnerHTML={{ __html: this.state.babelConfig }} />
             </pre>

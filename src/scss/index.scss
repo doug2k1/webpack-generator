@@ -1,44 +1,18 @@
-$color-black: #4a4a4a;
-$color-gray-light: #dbdbdb;
+/* Bulma framework (import only needed components) */
+@import '~bulma/sass/utilities/all';
+@import '~bulma/sass/base/all';
+@import '~bulma/sass/grid/all';
+@import '~bulma/sass/elements/container';
+@import '~bulma/sass/elements/form';
+@import '~bulma/sass/elements/title';
 
-$base-font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-$base-font-size: 16px;
+pre {
+  padding: $gap / 2;
 
-html {
-  box-sizing: border-box;
+  code {
+    font-size: 0.8rem;
+  }
 }
-
-* {
-  box-sizing: inherit;
-}
-
-*:before, *:after {
-  box-sizing: inherit;
-}
-
-body {
-  color: $color-black;
-  font-family: $base-font-family;
-  font-size: $base-font-size;
-  line-height: 1.5;
-}
-
-code {
-  font-size: 14px;
-}
-
-.row {
-  display: flex;
-}
-.col {
-  flex: 1 1 0;
-}
-
-.input {
-  border: 1px solid $color-gray-light;
-  border-radius: 3px;
-  font-size: 1rem;
-  height: 36px;
-  margin: 0;
-  padding: 5px 9px;
+.hljs {
+  padding: 0;
 }
