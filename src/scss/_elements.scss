@@ -1,0 +1,21 @@
+@import 'vars';
+
+html {
+  font-size: $base-font-size;
+}
+body {
+  color: $grey-dark;
+  font-family: $base-font-family;
+}
+
+header {
+  text-align: center;
+}
+
+pre {
+  padding: $gap / 2;
+
+  code {
+    font-size: 0.9rem;
+  }
+}

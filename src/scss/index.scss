@@ -1,18 +1,26 @@
-/* Bulma framework (import only needed components) */
-@import '~bulma/sass/utilities/all';
-@import '~bulma/sass/base/all';
-@import '~bulma/sass/grid/all';
-@import '~bulma/sass/elements/container';
-@import '~bulma/sass/elements/form';
-@import '~bulma/sass/elements/title';
+@import 'vars';
+@import 'generic';
+@import 'elements';
 
-pre {
-  padding: $gap / 2;
-
-  code {
-    font-size: 0.8rem;
-  }
+.row {
+  display: flex;
 }
-.hljs {
-  padding: 0;
+.col {
+  flex: 1 1 0;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.subtitle {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.section-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.section-subtitle {
+  font-size: 1rem;
 }

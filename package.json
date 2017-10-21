@@ -32,6 +32,7 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-standard": "^3.0.1",
+    "extract-text-webpack-plugin": "^3.0.1",
     "flow-bin": "^0.57.3",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
@@ -40,7 +41,6 @@
     "webpack-dev-server": "^2.9.2"
   },
   "dependencies": {
-    "bulma": "^0.6.0",
     "highlight.js": "^9.12.0",
     "object-path": "^0.11.4",
     "react": "^16.0.0",

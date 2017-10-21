@@ -32,8 +32,8 @@ class Form extends React.Component<Props, State> {
 
   render () {
     return (
-      <div>
-        <h2 className="title is-2">Form</h2>
+      <section>
+        <h3 className="section-title">Form</h3>
         <div className="field">
           <label className="label">Entry</label>
           <div className="control">
@@ -72,7 +72,7 @@ class Form extends React.Component<Props, State> {
             </label>
           </div>
         </div>
-      </div>
+      </section>
     )
   }
 }

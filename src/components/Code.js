@@ -30,8 +30,8 @@ class Code extends React.Component<Props, State> {
   render () {
     return (
       <div>
-        <h2 className="title">Webpack config</h2>
-        <p className="subtitle">webpack.config.js</p>
+        <h3 className="section-title">Webpack config</h3>
+        <p className="section-subtitle">webpack.config.js</p>
         <div>
           <pre>
             <code className="hljs javascript" dangerouslySetInnerHTML={{ __html: this.state.code }} />
@@ -39,8 +39,8 @@ class Code extends React.Component<Props, State> {
         </div>
 
         <div>
-          <h2 className="title">Modules</h2>
-          <p className="subtitle">Install with npm</p>
+          <h3 className="section-title">Modules</h3>
+          <p className="section-subtitle">Install with npm</p>
           <p
             dangerouslySetInnerHTML={{
               __html: this.state.modules.map(mod => (
@@ -55,10 +55,10 @@ class Code extends React.Component<Props, State> {
 
         {this.state.babelConfig && (
           <div>
-            <h2 className="title">Babel config</h2>
-            <p className="subtitle">.babelrc</p>
+            <h3 className="section-title">Babel config</h3>
+            <p className="section-subtitle">.babelrc</p>
             <pre>
-              <code className="hljs javascript" dangerouslySetInnerHTML={{ __html: this.state.babelConfig }} />
+              <code>{this.state.babelConfig}</code>
             </pre>
           </div>
         )}
@@ -131,9 +131,7 @@ const babelConfigFromData = (data) => {
 
   if (usingPresets.length > 0) {
     return `{
-  "presets": [
-    "${usingPresets.join('", "')}"
-  ]
+  "presets": [ "${usingPresets.join('", "')}" ]
 }
   
 `
