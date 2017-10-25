@@ -8,7 +8,10 @@ export type ConfigData = {
   loaders: {
     es6: boolean,
     react: boolean,
-    css: boolean,
-    sass: boolean
+    style: null | 'css' | 'sass'
+  },
+  plugins: {
+    extract: boolean,
+    extractFile: string
   }
 }

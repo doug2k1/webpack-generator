@@ -6,25 +6,34 @@ type Props = {
   label: string,
   name: string,
   type: 'text' | 'checkbox',
+  disabled: boolean,
   value?: string | boolean,
   onChange: ({ name: string, value?: string | boolean }) => void
 }
 
 type State = {
-  value: string | boolean
+  value: string | boolean,
+  disabled: boolean
 }
 
 class FormInput extends React.Component<Props, State> {
+  static defaultProps = {
+    disabled: false
+  }
+
   state = {
-    value: this.props.value || { checkbox: false, text: '' }[this.props.type]
+    value: this.props.value || { checkbox: false, text: '' }[this.props.type],
+    disabled: this.props.disabled
   }
 
   componentWillReceiveProps (newProps: Props) {
-    if (newProps.value !== this.state.value) {
-      this.setState({
-        value: newProps.value
-      })
-    }
+    ['value', 'disabled'].forEach((key) => {
+      if (newProps[key] !== this.state[key]) {
+        this.setState({
+          [key]: newProps[key]
+        })
+      }
+    })
   }
 
   id = uniqueId('input')
@@ -53,6 +62,7 @@ class FormInput extends React.Component<Props, State> {
             type={this.props.type}
             value={this.state.value}
             onChange={this.handleChange}
+            disabled={this.state.disabled}
           />
         </div>
       </div>
@@ -70,6 +80,7 @@ class FormInput extends React.Component<Props, State> {
               type={this.props.type}
               checked={this.state.value}
               onChange={this.handleChange}
+              disabled={this.state.disabled}
             />
             {this.props.label}
           </label>

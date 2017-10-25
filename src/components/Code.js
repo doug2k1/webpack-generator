@@ -1,4 +1,5 @@
 // @flow
+/* eslint react/no-danger: "off" */
 import React from 'react'
 import { js_beautify as beautify } from 'js-beautify/js/lib/beautify'
 // import only highlight.js core and javascript language for smaller bundle size
@@ -82,19 +83,40 @@ const codeFromData = (data) => {
   const rules = []
 
   if (data.loaders.es6) {
-    rules.push(`{ test: /\\.js$/, use: 'babel-loader' }`)
+    rules.push({
+      test: `/\\.js$/`,
+      use: `'babel-loader'`
+    })
   }
 
-  if (data.loaders.css) {
-    rules.push(`{ test: /\\.css$/, use: ['style-loader', 'css-loader'] }`)
+  if (data.loaders.style === 'css') {
+    rules.push({
+      test: `/\\.css$/`,
+      use: data.plugins.extract
+        ? `ExtractTextPlugin.extract({fallback: 'style-loader', use: ['css-loader']})`
+        : `['style-loader', 'css-loader']`
+    })
+  } else if (data.loaders.style === 'sass') {
+    rules.push({
+      test: `/\\.scss$/`,
+      use: data.plugins.extract
+        ? `ExtractTextPlugin.extract({fallback: 'style-loader', use: ['css-loader', 'sass-loader']})`
+        : `['style-loader', 'css-loader', 'sass-loader']`
+    })
   }
 
-  if (data.loaders.sass) {
-    rules.push(`{ test: /\\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] }`)
+  const plugins = []
+
+  if (data.plugins.extract) {
+    plugins.push({
+      importer: `const ExtractTextPlugin = require('extract-text-webpack-plugin');`,
+      init: `new ExtractTextPlugin('${data.plugins.extractFile}')`
+    })
   }
 
   let code = `const path = require('path');
- 
+    ${plugins.map(plugin => plugin.importer).join('\n')}
+    
     module.exports = {
     entry: '${data.entry}',
     
@@ -107,8 +129,16 @@ const codeFromData = (data) => {
     code += `,
 
       module: {
-        rules: [${rules.join(',\n\n')}]
+        rules: [${rules.map(rule => `{ test: ${rule.test}, use: ${rule.use} }`).join(',\n\n')}]
       }`
+  }
+
+  if (plugins.length > 0) {
+    code += `,
+
+      plugins: [
+        ${plugins.map(plugin => plugin.init).join(',\n')}
+      ]`
   }
 
   code += `};`
@@ -127,10 +157,11 @@ const modulesFromData = (data) => {
     'babel-loader': data.loaders.es6,
     'babel-preset-env': data.loaders.es6,
     'babel-preset-react': data.loaders.react,
-    'css-loader': data.loaders.css || data.loaders.sass,
-    'style-loader': data.loaders.css || data.loaders.sass,
-    'node-sass': data.loaders.sass,
-    'sass-loader': data.loaders.sass
+    'css-loader': data.loaders.style !== null,
+    'style-loader': data.loaders.style !== null,
+    'node-sass': data.loaders.style === 'sass',
+    'sass-loader': data.loaders.style === 'sass',
+    'extract-text-webpack-plugin': data.plugins.extract
   }
 
   return Object.keys(modules)

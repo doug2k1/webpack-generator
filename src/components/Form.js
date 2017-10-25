@@ -28,32 +28,98 @@ class Form extends React.Component<Props, State> {
       objPath.set(partialState, 'loaders.es6', value)
     }
 
+    if (name === 'loaders.style' && !value) {
+      objPath.set(partialState, 'plugins.extract', false)
+    }
+
     this.setState(partialState, () => {
       this.props.onChange({ ...this.state })
     })
   }
 
   render () {
-    const { data } = this.props
-
     return (
       <section>
         <h3 className="section-title">Form</h3>
 
         <p>Entry</p>
-        <FormInput label="Entry" type="text" name="entry" value={data.entry} onChange={this.handleFormChange} />
+        <FormInput
+          label="Entry"
+          type="text"
+          name="entry"
+          value={this.props.data.entry}
+          onChange={this.handleFormChange}
+        />
 
         <p>Output</p>
-        <FormInput label="Output path" type="text" name="output.path" value={data.output.path} onChange={this.handleFormChange} />
-        <FormInput label="Output filename" type="text" name="output.filename" value={data.output.filename} onChange={this.handleFormChange} />
+        <FormInput
+          label="Output path"
+          type="text"
+          name="output.path"
+          value={this.props.data.output.path}
+          onChange={this.handleFormChange}
+        />
+        <FormInput
+          label="Output filename"
+          type="text"
+          name="output.filename"
+          value={this.props.data.output.filename}
+          onChange={this.handleFormChange}
+        />
 
         <p>Loaders</p>
-        <FormInput label="ES6+" type="checkbox" name="loaders.es6" value={data.loaders.es6} onChange={this.handleFormChange} />
-        <FormInput label="React with JSX" type="checkbox" name="loaders.react" value={data.loaders.react} onChange={this.handleFormChange} />
-        <FormInput label="CSS" type="checkbox" name="loaders.css" value={data.loaders.css} onChange={this.handleFormChange} />
-        <FormInput label="Sass" type="checkbox" name="loaders.sass" value={data.loaders.sass} onChange={this.handleFormChange} />
+        <FormInput
+          label="ES6+"
+          type="checkbox"
+          name="loaders.es6"
+          value={this.props.data.loaders.es6}
+          onChange={this.handleFormChange}
+        />
+        <FormInput
+          label="React with JSX"
+          type="checkbox"
+          name="loaders.react"
+          value={this.props.data.loaders.react}
+          onChange={this.handleFormChange}
+        />
+
+        <div className="field">
+          <label className="label" htmlFor="s1">Styles</label>
+          <div className="control select">
+            <select
+              id="s1"
+              name="loaders.style"
+              onChange={(event) => {
+                this.handleFormChange({
+                  name: 'loaders.style',
+                  value: event.currentTarget.value
+                })
+              }}
+            >
+              <option value="">No styles</option>
+              <option value="css">CSS</option>
+              <option value="sass">Sass</option>
+            </select>
+          </div>
+        </div>
 
         <p>Plugins</p>
+        <FormInput
+          label="Extract Styles"
+          type="checkbox"
+          name="plugins.extract"
+          value={this.props.data.plugins.extract}
+          onChange={this.handleFormChange}
+          disabled={!this.state.loaders.style}
+        />
+        <FormInput
+          label="Styles file"
+          type="text"
+          name="plugins.extractFile"
+          value={this.props.data.plugins.extractFile}
+          onChange={this.handleFormChange}
+          disabled={!this.state.loaders.style}
+        />
       </section>
     )
   }

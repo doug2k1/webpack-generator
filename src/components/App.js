@@ -21,8 +21,11 @@ class App extends React.Component<{}, State> {
       loaders: {
         es6: false,
         react: false,
-        css: false,
-        sass: false
+        style: null
+      },
+      plugins: {
+        extract: false,
+        extractFile: '/css/styles.css'
       }
     }
   }
