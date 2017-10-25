@@ -6,7 +6,7 @@
   display: flex;
 }
 .col {
-  flex: 1 1 0;
+  flex: 1;
 }
 
 .title {
@@ -23,4 +23,15 @@
 }
 .section-subtitle {
   font-size: 1rem;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: $max-width;
+}
+
+.modules {
+  pre {
+    white-space: normal;
+  }
 }

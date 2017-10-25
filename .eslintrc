@@ -14,6 +14,7 @@
   "rules": {
     "react/jsx-filename-extension": "off",
     "react/prefer-stateless-function": "off",
+    "react/no-unused-prop-types": "off",
     "jsx-a11y/label-has-for": ["error", {
       "required": {"some": ["nesting", "id"]}
     }]

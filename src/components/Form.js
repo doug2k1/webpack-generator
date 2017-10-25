@@ -1,77 +1,59 @@
 // @flow
-import * as React from 'react'
+import React from 'react'
 import objPath from 'object-path'
 import type { ConfigData } from '../types/ConfigData.type'
+import FormInput from './FormInput'
 
 type State = ConfigData;
 
 type Props = {
   data: ConfigData,
   onChange: (State) => void
-};
+}
+
+type FormInputEvent = {
+  name: string,
+  value?: string | boolean
+}
 
 class Form extends React.Component<Props, State> {
   state = this.props.data
 
-  handleFormChange = (event: SyntheticEvent<HTMLInputElement>) => {
-    const target = event.currentTarget
-    const value = target.type === 'checkbox' ? target.checked : target.value
-    const { name } = target
+  handleFormChange = ({ name, value }: FormInputEvent) => {
     const partialState = {}
 
     objPath.set(partialState, name, value)
 
-    this.setState((prevState) => {
-      const newState = { ...prevState }
-      objPath.set(newState, name, value)
-      return newState
-    }, () => {
+    if (name === 'loaders.react' && value) {
+      objPath.set(partialState, 'loaders.es6', value)
+    }
+
+    this.setState(partialState, () => {
       this.props.onChange({ ...this.state })
     })
   }
 
   render () {
+    const { data } = this.props
+
     return (
       <section>
         <h3 className="section-title">Form</h3>
-        <div className="field">
-          <label className="label">Entry</label>
-          <div className="control">
-            <input className="input" type="text" name="entry" value={this.state.entry} onChange={this.handleFormChange} />
-          </div>
-        </div>
 
-        <div className="field">
-          <label className="label">Output path</label>
-          <div className="control">
-            <input className="input" type="text" name="output.path" value={this.state.output.path} onChange={this.handleFormChange} />
-          </div>
-        </div>
+        <p>Entry</p>
+        <FormInput label="Entry" type="text" name="entry" value={data.entry} onChange={this.handleFormChange} />
 
-        <div className="field">
-          <label className="label">Output filename</label>
-          <div className="control">
-            <input className="input" type="text" name="output.filename" value={this.state.output.filename} onChange={this.handleFormChange} />
-          </div>
-        </div>
+        <p>Output</p>
+        <FormInput label="Output path" type="text" name="output.path" value={data.output.path} onChange={this.handleFormChange} />
+        <FormInput label="Output filename" type="text" name="output.filename" value={data.output.filename} onChange={this.handleFormChange} />
 
-        <div className="field">
-          <div className="control">
-            <label className="checkbox">
-              <input type="checkbox" name="loaders.es6" checked={this.state.loaders.es6} onChange={this.handleFormChange} />
-              Use ES6?
-            </label>
-          </div>
-        </div>
+        <p>Loaders</p>
+        <FormInput label="ES6+" type="checkbox" name="loaders.es6" value={data.loaders.es6} onChange={this.handleFormChange} />
+        <FormInput label="React with JSX" type="checkbox" name="loaders.react" value={data.loaders.react} onChange={this.handleFormChange} />
+        <FormInput label="CSS" type="checkbox" name="loaders.css" value={data.loaders.css} onChange={this.handleFormChange} />
+        <FormInput label="Sass" type="checkbox" name="loaders.sass" value={data.loaders.sass} onChange={this.handleFormChange} />
 
-        <div className="field">
-          <div className="control">
-            <label className="checkbox">
-              <input type="checkbox" name="loaders.react" checked={this.state.loaders.react} onChange={this.handleFormChange} />
-              React?
-            </label>
-          </div>
-        </div>
+        <p>Plugins</p>
       </section>
     )
   }

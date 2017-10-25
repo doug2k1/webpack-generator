@@ -7,6 +7,8 @@ export type ConfigData = {
   },
   loaders: {
     es6: boolean,
-    react: boolean
+    react: boolean,
+    css: boolean,
+    sass: boolean
   }
 }

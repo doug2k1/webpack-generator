@@ -4,6 +4,12 @@
   ],
   "plugins": [
     "transform-class-properties",
-    "babel-plugin-transform-object-rest-spread"
+    "babel-plugin-transform-object-rest-spread",
+    [ "transform-imports", {
+      "lodash": {
+        "transform": "lodash/${member}",
+        "preventFullImport": true
+      }
+    }]
   ]
 }

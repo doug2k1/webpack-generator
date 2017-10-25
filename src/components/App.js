@@ -1,5 +1,6 @@
 // @flow
-import * as React from 'react'
+import React from 'react'
+import { merge } from 'lodash'
 import Form from './Form'
 import Code from './Code'
 import type { ConfigData } from '../types/ConfigData.type'
@@ -19,15 +20,15 @@ class App extends React.Component<{}, State> {
       },
       loaders: {
         es6: false,
-        react: false
+        react: false,
+        css: false,
+        sass: false
       }
     }
   }
 
   handleFormChange = (data: ConfigData) => {
-    this.setState({
-      formData: data
-    })
+    this.setState(prevState => ({ formData: merge({}, prevState.formData, data) }))
   }
 
   render () {

@@ -1,5 +1,6 @@
 // @flow
-import * as React from 'react'
+import React from 'react'
+import { js_beautify as beautify } from 'js-beautify/js/lib/beautify'
 // import only highlight.js core and javascript language for smaller bundle size
 import hljs from 'highlight.js/lib/highlight'
 import hljsJS from 'highlight.js/lib/languages/javascript'
@@ -38,7 +39,7 @@ class Code extends React.Component<Props, State> {
           </pre>
         </div>
 
-        <div>
+        <div className="modules">
           <h3 className="section-title">Modules</h3>
           <p className="section-subtitle">Install with npm</p>
           <p
@@ -78,32 +79,43 @@ const stateFromProps = props => ({
 })
 
 const codeFromData = (data) => {
-  let code = `const path = require('path');
- 
-module.exports = {
-  entry: '${data.entry}',
-  
-  output: {
-    path: path.resolve('${data.output.path}'),
-    filename: '${data.output.filename}'
-  }`
-  if (data.loaders.es6) {
-    code += `,
+  const rules = []
 
-  module: {
-    rules: [
-      {
-        test: /\\.js$/,
-        loader: 'babel-loader'
-      }
-    ]
-  }`
+  if (data.loaders.es6) {
+    rules.push(`{ test: /\\.js$/, use: 'babel-loader' }`)
   }
 
-  code += `
-};
+  if (data.loaders.css) {
+    rules.push(`{ test: /\\.css$/, use: ['style-loader', 'css-loader'] }`)
+  }
 
-`
+  if (data.loaders.sass) {
+    rules.push(`{ test: /\\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] }`)
+  }
+
+  let code = `const path = require('path');
+ 
+    module.exports = {
+    entry: '${data.entry}',
+    
+    output: {
+      path: path.resolve('${data.output.path}'),
+      filename: '${data.output.filename}'
+    }`
+
+  if (rules.length > 0) {
+    code += `,
+
+      module: {
+        rules: [${rules.join(',\n\n')}]
+      }`
+  }
+
+  code += `};`
+
+  code = beautify(code, {
+    indent_size: 2
+  })
 
   return hljs.highlight('javascript', code).value
 }
@@ -114,7 +126,11 @@ const modulesFromData = (data) => {
     'babel-core': data.loaders.es6,
     'babel-loader': data.loaders.es6,
     'babel-preset-env': data.loaders.es6,
-    'babel-preset-react': data.loaders.react
+    'babel-preset-react': data.loaders.react,
+    'css-loader': data.loaders.css || data.loaders.sass,
+    'style-loader': data.loaders.css || data.loaders.sass,
+    'node-sass': data.loaders.sass,
+    'sass-loader': data.loaders.sass
   }
 
   return Object.keys(modules)
@@ -133,7 +149,7 @@ const babelConfigFromData = (data) => {
     return `{
   "presets": [ "${usingPresets.join('", "')}" ]
 }
-  
+
 `
   }
 
