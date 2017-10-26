@@ -32,37 +32,41 @@ class Code extends React.Component<Props, State> {
   render () {
     return (
       <div>
-        <h3 className="section-title">Webpack config</h3>
-        <p className="section-subtitle">webpack.config.js</p>
-        <div>
-          <pre>
-            <code className="hljs javascript" dangerouslySetInnerHTML={{ __html: this.state.code }} />
-          </pre>
-        </div>
+        <section>
+          <h3 className="section-title">Webpack config</h3>
+          <p className="section-subtitle">webpack.config.js</p>
+          <div>
+            <pre>
+              <code className="hljs javascript" dangerouslySetInnerHTML={{ __html: this.state.code }} />
+            </pre>
+          </div>
+        </section>
 
-        <div className="modules">
-          <h3 className="section-title">Modules</h3>
-          <p className="section-subtitle">Install with npm</p>
-          <p
-            dangerouslySetInnerHTML={{
-              __html: this.state.modules.map(mod => (
-                `<a href="https://www.npmjs.com/package/${mod}" target="_blank">${mod}</a>`
-              )).join(', ')
-            }}
-          />
-          <pre>
-            <code>$ npm i -D {this.state.modules.join(' ')}</code>
-          </pre>
-        </div>
+        <section>
+          <div className="modules">
+            <h3 className="section-title">Modules</h3>
+            <p className="section-subtitle">Install with npm</p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: this.state.modules.map(mod => (
+                  `<a href="https://www.npmjs.com/package/${mod}" target="_blank">${mod}</a>`
+                )).join(', ')
+              }}
+            />
+            <pre>
+              <code className="hljs">npm i -D {this.state.modules.join(' ')}</code>
+            </pre>
+          </div>
+        </section>
 
         {this.state.babelConfig && (
-          <div>
+          <section>
             <h3 className="section-title">Babel config</h3>
             <p className="section-subtitle">.babelrc</p>
             <pre>
-              <code>{this.state.babelConfig}</code>
+              <code className="hljs">{this.state.babelConfig}</code>
             </pre>
-          </div>
+          </section>
         )}
       </div>
     )
@@ -115,8 +119,7 @@ const codeFromData = (data) => {
   }
 
   let code = `const path = require('path');
-    ${plugins.map(plugin => plugin.importer).join('\n')}
-    
+    ${plugins.map(plugin => `${plugin.importer}\n`).join('')}
     module.exports = {
     entry: '${data.entry}',
     
@@ -179,9 +182,7 @@ const babelConfigFromData = (data) => {
   if (usingPresets.length > 0) {
     return `{
   "presets": [ "${usingPresets.join('", "')}" ]
-}
-
-`
+}`
   }
 
   return null

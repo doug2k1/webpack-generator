@@ -7,7 +7,8 @@
     "start": "webpack-dev-server",
     "build": "webpack -p",
     "lint": "eslint ./src --fix",
-    "flow": "flow"
+    "flow": "flow",
+    "webpack:stats": "webpack --json > stats.json"
   },
   "keywords": [],
   "author": "",
@@ -33,7 +34,7 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-standard": "^3.0.1",
-    "extract-text-webpack-plugin": "^3.0.1",
+    "extract-text-webpack-plugin": "^3.0.2",
     "flow-bin": "^0.57.3",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
@@ -42,6 +43,7 @@
     "webpack-dev-server": "^2.9.2"
   },
   "dependencies": {
+    "clipboard": "^1.7.1",
     "highlight.js": "^9.12.0",
     "js-beautify": "^1.7.4",
     "lodash": "^4.17.4",

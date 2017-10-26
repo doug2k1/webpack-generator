@@ -1,34 +1,8 @@
 @import 'vars';
 @import 'generic';
 @import 'elements';
-
-.row {
-  display: flex;
-}
-.col {
-  flex: 1;
-}
-
-.title {
-  font-size: 2rem;
-  font-weight: bold;
-}
-.subtitle {
-  font-size: 1rem;
-  font-weight: bold;
-}
-.section-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-.section-subtitle {
-  font-size: 1rem;
-}
-
-.container {
-  margin: 0 auto;
-  max-width: $max-width;
-}
+@import 'objects';
+// components
 
 .modules {
   pre {

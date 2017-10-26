@@ -54,7 +54,7 @@ class FormInput extends React.Component<Props, State> {
   renderInputText () {
     return (
       <div className="field">
-        <label className="label" htmlFor={this.id}>{this.props.label}</label>
+        <label className="label" htmlFor={this.id}>{this.props.label}:</label>
         <div className="control">
           <input
             id={this.id}

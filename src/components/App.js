@@ -36,25 +36,35 @@ class App extends React.Component<{}, State> {
 
   render () {
     return (
-      <div className="container">
+      <div>
         <header>
-          <h1 className="title">Webpack</h1>
-          <h2 className="subtitle">Config Generator</h2>
-          <p className="description">
-            Set the options on the left to generate a webpack config on the right.<br />
-            Use it as a starting point for your project, or to just learn how different
-            options reflect on the configuration.
-          </p>
+          <div className="container">
+            <h1 className="title">Webpack</h1>
+            <h2 className="subtitle">Config Generator</h2>
+            <p className="description">
+              Set the options on the left to generate a webpack config on the right.<br />
+              Use it as a starting point for your project, or to just learn how different
+              options reflect on the configuration.
+            </p>
+          </div>
         </header>
 
-        <div className="row">
-          <div className="col">
-            <Form data={this.state.formData} onChange={this.handleFormChange} />
+        <main>
+          <div className="container row">
+            <div className="col">
+              <Form data={this.state.formData} onChange={this.handleFormChange} />
+            </div>
+            <div className="col">
+              <Code data={this.state.formData} />
+            </div>
           </div>
-          <div className="col">
-            <Code data={this.state.formData} />
+        </main>
+
+        <footer>
+          <div className="container">
+            <p><strong>Webpack Config Generator</strong> by Douglas Matoso</p>
           </div>
-        </div>
+        </footer>
       </div>
     )
   }

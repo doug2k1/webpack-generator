@@ -3,19 +3,55 @@
 html {
   font-size: $base-font-size;
 }
+
 body {
+  background-color: $white-ter;
   color: $grey-dark;
   font-family: $base-font-family;
 }
 
 header {
+  background-color: $blue;
+  color: $white;
+  padding: $gap;
   text-align: center;
 }
 
+main {
+  background-color: $white;
+  padding: $gap;
+}
+
+footer {
+  padding: $gap;
+}
+
+section {
+  margin-bottom: $gap;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
 pre {
-  padding: $gap / 2;
+  margin: 0;
+  padding: 0;
 
   code {
     font-size: 0.9rem;
   }
+}
+
+fieldset {
+  border: 1px solid $grey-lighter;
+  border-radius: $radius;
+  margin-bottom: $gap;
+  padding: $gap / 2;
+}
+
+legend {
+  color: $cyan;
+  padding: 0 10px;
+  font-size: 1.1rem;
 }
