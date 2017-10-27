@@ -67,6 +67,17 @@ class App extends React.Component<{}, State> {
             <p>
               Source-code on <a href="https://github.com/doug2k1/webpack-generator" target="_blank" rel="noopener noreferrer">GitHub</a>
             </p>
+            <p>
+              <a
+                className="github-button"
+                href="https://github.com/doug2k1/webpack-generator"
+                data-icon="octicon-star"
+                data-show-count="true"
+                aria-label="Star doug2k1/webpack-generator on GitHub"
+              >
+                Star
+              </a>
+            </p>
           </div>
         </footer>
       </div>

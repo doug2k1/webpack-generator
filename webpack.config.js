@@ -10,6 +10,9 @@ module.exports = {
   },
 
   devtool: 'source-map',
+  devServer: {
+    contentBase: path.resolve('dist')
+  },
 
   module: {
     rules: [
