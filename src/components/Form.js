@@ -98,7 +98,7 @@ class Form extends React.Component<Props, State> {
                 onChange={(event) => {
                   this.handleFormChange({
                     name: 'loaders.style',
-                    value: event.currentTarget.value
+                    value: event.currentTarget.value || null
                   })
                 }}
               >
