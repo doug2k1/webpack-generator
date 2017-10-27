@@ -30,6 +30,10 @@ header {
 main {
   background-color: $white;
   padding: $gap;
+
+  @media (max-width: 880px) {
+    padding: $gap 0;
+  }
 }
 
 footer {

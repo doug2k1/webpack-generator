@@ -65,7 +65,7 @@ class App extends React.Component<{}, State> {
               <a href="https://twitter.com/doug2k1" target="_blank" rel="noopener noreferrer">@doug2k1</a>)
             </p>
             <p>
-              Source-code on <a href="https://github.com/doug2k1">GitHub</a>
+              Source-code on <a href="https://github.com/doug2k1/webpack-generator" target="_blank" rel="noopener noreferrer">GitHub</a>
             </p>
           </div>
         </footer>

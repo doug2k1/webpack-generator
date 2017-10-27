@@ -15,6 +15,15 @@
   max-width: $max-width;
 }
 
+@media (max-width: 767px) {
+  .row, .col {
+    display: block;
+  }
+  .col {
+    padding-right: $gap;
+  }
+}
+
 // titles
 
 .title {
