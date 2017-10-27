@@ -39,10 +39,8 @@ class App extends React.Component<{}, State> {
       <div>
         <header>
           <div className="container">
-            <h1 className="title">Webpack</h1>
-            <h2 className="subtitle">Config Generator</h2>
+            <h1 className="title">Webpack Config Generator</h1>
             <p className="description">
-              Set the options on the left to generate a webpack config on the right.<br />
               Use it as a starting point for your project, or to just learn how different
               options reflect on the configuration.
             </p>
@@ -62,7 +60,13 @@ class App extends React.Component<{}, State> {
 
         <footer>
           <div className="container">
-            <p><strong>Webpack Config Generator</strong> by Douglas Matoso</p>
+            <p>
+              <strong>Webpack Config Generator</strong> by Douglas Matoso (
+              <a href="https://twitter.com/doug2k1" target="_blank" rel="noopener noreferrer">@doug2k1</a>)
+            </p>
+            <p>
+              Source-code on <a href="https://github.com/doug2k1">GitHub</a>
+            </p>
           </div>
         </footer>
       </div>

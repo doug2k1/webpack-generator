@@ -71,7 +71,7 @@ class FormInput extends React.Component<Props, State> {
 
   renderInputCheckbox () {
     return (
-      <div className="field">
+      <div className="field checkbox">
         <div className="control">
           <label className="label" htmlFor={this.id}>
             <input

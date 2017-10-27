@@ -10,6 +10,16 @@ body {
   font-family: $base-font-family;
 }
 
+a {
+  color: $blue;
+  text-decoration: underline;
+
+  &:hover {
+    color: $grey-dark;
+    text-decoration: none;
+  }
+}
+
 header {
   background-color: $blue;
   color: $white;
@@ -24,6 +34,7 @@ main {
 
 footer {
   padding: $gap;
+  text-align: center;
 }
 
 section {

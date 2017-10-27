@@ -92,6 +92,7 @@ class Form extends React.Component<Props, State> {
             <label className="label" htmlFor="s1">Styles:</label>
             <div className="control select">
               <select
+                className="input-select"
                 id="s1"
                 name="loaders.style"
                 onChange={(event) => {
@@ -112,7 +113,7 @@ class Form extends React.Component<Props, State> {
         <fieldset>
           <legend>Plugins</legend>
           <FormInput
-            label="Extract Styles"
+            label="Extract styles"
             type="checkbox"
             name="plugins.extract"
             value={this.props.data.plugins.extract}
