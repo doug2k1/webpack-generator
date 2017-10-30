@@ -12,11 +12,6 @@ module.exports = {
     filename: '[name].js'
   },
 
-  devtool: 'source-map',
-  devServer: {
-    contentBase: path.resolve('dist')
-  },
-
   module: {
     rules: [
       {

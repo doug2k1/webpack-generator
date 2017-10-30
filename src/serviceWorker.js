@@ -1,16 +1,19 @@
-const path = process.env.NODE_ENV === 'production' ? '/webpack-generator' : ''
-const CACHE_NAME = 'webpack-generator-v2'
+/* eslint-env serviceworker */
+/* eslint function-paren-newline: "off" */
+/* eslint no-restricted-globals: "off" */
+
+const CACHE_NAME = 'webpack-generator-v4'
 const urlsToCache = [
-  `${path}/`,
-  `${path}/bundle.js`,
-  `${path}/styles.css`
+  `${process.env.PUBLIC_PATH}/`,
+  `${process.env.PUBLIC_PATH}/bundle.js`,
+  `${process.env.PUBLIC_PATH}/styles.css`
 ]
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(CACHE_NAME)
-    .then((cache) => {
-      return cache.addAll(urlsToCache)
-    }))
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(urlsToCache))
+  )
 })
 
 self.addEventListener('fetch', (event) => {
@@ -40,4 +43,20 @@ self.addEventListener('fetch', (event) => {
           return fetchedResponse
         })
     }))
+})
+
+self.addEventListener('activate', (event) => {
+  const cacheWhiteList = [CACHE_NAME]
+
+  event.waitUntil(caches.keys()
+    .then(cacheNames => Promise.all(
+      cacheNames.map((cacheName) => {
+        if (cacheWhiteList.indexOf(cacheName) === -1) {
+          return caches.delete(cacheName)
+        }
+
+        return null
+      })
+    ))
+  )
 })
