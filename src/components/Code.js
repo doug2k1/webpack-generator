@@ -49,7 +49,7 @@ class Code extends React.Component<Props, State> {
             <p
               dangerouslySetInnerHTML={{
                 __html: this.state.modules.map(mod => (
-                  `<a href="https://www.npmjs.com/package/${mod}" target="_blank">${mod}</a>`
+                  `<a href="https://www.npmjs.com/package/${mod}" target="_blank" rel="noopener noreferrer">${mod}</a>`
                 )).join(', ')
               }}
             />
