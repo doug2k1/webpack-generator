@@ -10,6 +10,7 @@
     "lint": "eslint ./src --fix",
     "flow": "flow"
   },
+  "homepage": "https://doug2k1.github.io/webpack-generator",
   "keywords": [],
   "author": "",
   "license": "MIT",
