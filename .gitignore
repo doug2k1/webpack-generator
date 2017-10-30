@@ -1,5 +1,5 @@
 .idea
 .DS_Store
 node_modules
-dist
-!dist/index.html
+/dist/*
+!/dist/index.html
