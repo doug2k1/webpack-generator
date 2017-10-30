@@ -1,8 +1,9 @@
-const CACHE_NAME = 'webpack-generator-v1'
+const path = process.env.NODE_ENV === 'production' ? '/webpack-generator' : ''
+const CACHE_NAME = 'webpack-generator-v2'
 const urlsToCache = [
-  '/',
-  '/bundle.js',
-  '/styles.css'
+  `${path}/`,
+  `${path}/bundle.js`,
+  `${path}/styles.css`
 ]
 
 self.addEventListener('install', (event) => {
