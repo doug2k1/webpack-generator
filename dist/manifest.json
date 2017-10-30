@@ -1,0 +1,8 @@
+{
+  "short_name": "Webpack ConfGen",
+  "name": "Webpack Config Generator",
+  "start_url": "index.html?launcher=true",
+  "background_color": "#3273dc",
+  "theme_color": "#3273dc",
+  "display": "standalone"
+}
