@@ -2,11 +2,12 @@
 /* eslint function-paren-newline: "off" */
 /* eslint no-restricted-globals: "off" */
 
-const CACHE_NAME = 'webpack-generator-v4'
+const CACHE_NAME = 'webpack-generator-v7'
 const urlsToCache = [
   `${process.env.PUBLIC_PATH}/`,
   `${process.env.PUBLIC_PATH}/bundle.js`,
-  `${process.env.PUBLIC_PATH}/styles.css`
+  `${process.env.PUBLIC_PATH}/styles.css`,
+  `${process.env.PUBLIC_PATH}/manifest.json`
 ]
 
 self.addEventListener('install', (event) => {
