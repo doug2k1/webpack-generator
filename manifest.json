@@ -2,7 +2,20 @@
   "short_name": "Webpack Cfg",
   "name": "Webpack Config Generator",
   "start_url": "/webpack-generator/?launcher=true",
+  "scope": "/webpack-generator",
   "background_color": "#3273dc",
   "theme_color": "#3273dc",
-  "display": "standalone"
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
