@@ -2,12 +2,15 @@
 /* eslint function-paren-newline: "off" */
 /* eslint no-restricted-globals: "off" */
 
-const CACHE_NAME = 'webpack-generator-v7'
+const CACHE_NAME = 'webpack-generator-v8'
 const urlsToCache = [
   `${process.env.PUBLIC_PATH}/`,
   `${process.env.PUBLIC_PATH}/bundle.js`,
   `${process.env.PUBLIC_PATH}/styles.css`,
-  `${process.env.PUBLIC_PATH}/manifest.json`
+  `${process.env.PUBLIC_PATH}/manifest.json`,
+  `${process.env.PUBLIC_PATH}/android-chrome-512x512.png`,
+  `${process.env.PUBLIC_PATH}/android-chrome-192x192.png`,
+  `${process.env.PUBLIC_PATH}/apple-touch-icon.png`
 ]
 
 self.addEventListener('install', (event) => {
