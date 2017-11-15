@@ -25,7 +25,7 @@ class App extends React.Component<{}, State> {
       },
       plugins: {
         extract: false,
-        extractFile: '/css/styles.css'
+        extractFile: 'css/styles.css'
       }
     }
   }

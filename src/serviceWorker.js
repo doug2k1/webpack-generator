@@ -2,7 +2,7 @@
 /* eslint function-paren-newline: "off" */
 /* eslint no-restricted-globals: "off" */
 
-const CACHE_NAME = 'webpack-generator-v8'
+const CACHE_NAME = 'webpack-generator-v9'
 const urlsToCache = [
   `${process.env.PUBLIC_PATH}/`,
   `${process.env.PUBLIC_PATH}/bundle.js`,
