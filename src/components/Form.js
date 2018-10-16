@@ -4,11 +4,11 @@ import objPath from 'object-path'
 import type { ConfigData } from '../types/ConfigData.type'
 import FormInput from './FormInput'
 
-type State = ConfigData;
+type State = ConfigData
 
 type Props = {
   data: ConfigData,
-  onChange: (State) => void
+  onChange: State => void
 }
 
 type FormInputEvent = {
@@ -37,7 +37,7 @@ class Form extends React.Component<Props, State> {
     })
   }
 
-  render () {
+  render() {
     return (
       <section>
         <h3 className="section-title">Options</h3>
@@ -89,13 +89,15 @@ class Form extends React.Component<Props, State> {
           />
 
           <div className="field">
-            <label className="label" htmlFor="s1">Styles:</label>
+            <label className="label" htmlFor="s1">
+              Styles:
+            </label>
             <div className="control select">
               <select
                 className="input-select"
                 id="s1"
                 name="loaders.style"
-                onChange={(event) => {
+                onChange={event => {
                   this.handleFormChange({
                     name: 'loaders.style',
                     value: event.currentTarget.value || null

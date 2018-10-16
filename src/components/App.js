@@ -31,18 +31,20 @@ class App extends React.Component<{}, State> {
   }
 
   handleFormChange = (data: ConfigData) => {
-    this.setState(prevState => ({ formData: merge({}, prevState.formData, data) }))
+    this.setState(prevState => ({
+      formData: merge({}, prevState.formData, data)
+    }))
   }
 
-  render () {
+  render() {
     return (
       <div>
         <header>
           <div className="container">
             <h1 className="title">Webpack Config Generator</h1>
             <p className="description">
-              Use it as a starting point for your project, or to just learn how different
-              options reflect on the configuration.
+              Use it as a starting point for your project, or to just learn how
+              different options reflect on the configuration.
             </p>
           </div>
         </header>
@@ -50,7 +52,10 @@ class App extends React.Component<{}, State> {
         <main>
           <div className="container row">
             <div className="col">
-              <Form data={this.state.formData} onChange={this.handleFormChange} />
+              <Form
+                data={this.state.formData}
+                onChange={this.handleFormChange}
+              />
             </div>
             <div className="col">
               <Code data={this.state.formData} />
@@ -62,10 +67,23 @@ class App extends React.Component<{}, State> {
           <div className="container">
             <p>
               <strong>Webpack Config Generator</strong> by Douglas Matoso (
-              <a href="https://twitter.com/doug2k1" target="_blank" rel="noopener noreferrer">@doug2k1</a>)
+              <a
+                href="https://twitter.com/doug2k1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                @doug2k1
+              </a>)
             </p>
             <p>
-              Source-code on <a href="https://github.com/doug2k1/webpack-generator" target="_blank" rel="noopener noreferrer">GitHub</a>
+              Source-code on{' '}
+              <a
+                href="https://github.com/doug2k1/webpack-generator"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
             </p>
           </div>
         </footer>

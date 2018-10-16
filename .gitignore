@@ -1,6 +1,7 @@
-.idea
+
 .DS_Store
 node_modules
+flow-typed
 /dist/*
 !/dist/index.html
 !/dist/manifest.json

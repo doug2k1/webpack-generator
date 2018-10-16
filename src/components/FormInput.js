@@ -26,8 +26,8 @@ class FormInput extends React.Component<Props, State> {
     disabled: this.props.disabled
   }
 
-  componentWillReceiveProps (newProps: Props) {
-    ['value', 'disabled'].forEach((key) => {
+  componentWillReceiveProps(newProps: Props) {
+    ;['value', 'disabled'].forEach(key => {
       if (newProps[key] !== this.state[key]) {
         this.setState({
           [key]: newProps[key]
@@ -41,20 +41,25 @@ class FormInput extends React.Component<Props, State> {
   handleChange = (event: SyntheticEvent<HTMLInputElement>) => {
     const target = event.currentTarget
 
-    this.setState({
-      value: this.props.type === 'checkbox' ? target.checked : target.value
-    }, () => {
-      this.props.onChange({
-        name: this.props.name,
-        value: this.state.value
-      })
-    })
+    this.setState(
+      {
+        value: this.props.type === 'checkbox' ? target.checked : target.value
+      },
+      () => {
+        this.props.onChange({
+          name: this.props.name,
+          value: this.state.value
+        })
+      }
+    )
   }
 
-  renderInputText () {
+  renderInputText() {
     return (
       <div className="field">
-        <label className="label" htmlFor={this.id}>{this.props.label}:</label>
+        <label className="label" htmlFor={this.id}>
+          {this.props.label}:
+        </label>
         <div className="control">
           <input
             id={this.id}
@@ -69,7 +74,7 @@ class FormInput extends React.Component<Props, State> {
     )
   }
 
-  renderInputCheckbox () {
+  renderInputCheckbox() {
     return (
       <div className="field checkbox">
         <div className="control">
@@ -89,8 +94,10 @@ class FormInput extends React.Component<Props, State> {
     )
   }
 
-  render () {
-    return this.props.type === 'checkbox' ? this.renderInputCheckbox() : this.renderInputText()
+  render() {
+    return this.props.type === 'checkbox'
+      ? this.renderInputCheckbox()
+      : this.renderInputText()
   }
 }
 

@@ -1,22 +1,21 @@
 {
   "parser": "babel-eslint",
-  "extends": [
-    "plugin:flowtype/recommended",
-    "airbnb",
-    "standard"
-  ],
+  "extends": ["plugin:flowtype/recommended", "airbnb", "prettier"],
   "env": {
-    "browser": true
+    "browser": true,
+    "jest/globals": true
   },
-  "plugins": [
-    "flowtype"
-  ],
+  "plugins": ["jest", "flowtype", "prettier"],
   "rules": {
+    "prettier/prettier": "error",
     "react/jsx-filename-extension": "off",
     "react/prefer-stateless-function": "off",
     "react/no-unused-prop-types": "off",
-    "jsx-a11y/label-has-for": ["error", {
-      "required": {"some": ["nesting", "id"]}
-    }]
+    "jsx-a11y/label-has-for": [
+      "error",
+      {
+        "required": { "some": ["nesting", "id"] }
+      }
+    ]
   }
 }
